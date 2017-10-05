@@ -1,11 +1,18 @@
 package com.example.billy.galaxy_app;
 
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
@@ -16,39 +23,28 @@ import com.daimajia.slider.library.Tricks.ViewPagerEx;
 
 import java.util.HashMap;
 
-import Adapter.PagerAdapter;
 
-public class MainActivity  extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
-    private ViewPager pager;
-    private TabLayout tabLayout;
+public class Main2Activity extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener{
+
+
     private SliderLayout imageSlider;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        addControl();
+        setContentView(R.layout.activity_main2);
         ADDLOL();
-    }
 
-    private void addControl() {
-        pager = (ViewPager) findViewById(R.id.viewpager);
-        tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
-        FragmentManager manager = getSupportFragmentManager();
-        PagerAdapter adapter = new PagerAdapter(manager, getBaseContext());
-        pager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(pager);
-        pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.setTabsFromPagerAdapter(adapter);
     }
     void ADDLOL()
     {
-        imageSlider = (SliderLayout)findViewById(R.id.slider2);
+        imageSlider = (SliderLayout)findViewById(R.id.slider);
 
         HashMap<String,String> url_maps = new HashMap<String, String>();
-        url_maps.put("Hannibal", "https://www.youtube.com/yts/img/yt_1200-vfl4C3T0K.png");
+        url_maps.put("Hannibal", "http://static2.hypable.com/wp-content/uploads/2013/12/hannibal-season-2-release-date.jpg");
         url_maps.put("Big Bang Theory", "http://tvfiles.alphacoders.com/100/hdclearart-10.png");
         url_maps.put("House of Cards", "http://cdn3.nflximg.net/images/3093/2043093.jpg");
-        url_maps.put("Game of Thrones", "http://www.marcopeterson.info/wp-content/uploads/2015/03/GitHub-Logo.png");
+        url_maps.put("Game of Thrones", "http://images.boomsbeat.com/data/images/full/19640/game-of-thrones-season-4-jpg.jpg");
 
         HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
 //        file_maps.put("Hannibal",R.drawable.hannibal);
@@ -75,7 +71,7 @@ public class MainActivity  extends AppCompatActivity implements BaseSliderView.O
         imageSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
         imageSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         imageSlider.setCustomAnimation(new DescriptionAnimation());
-        imageSlider.setDuration(5000);
+        imageSlider.setDuration(2000);
         imageSlider.addOnPageChangeListener(this);
 
     }

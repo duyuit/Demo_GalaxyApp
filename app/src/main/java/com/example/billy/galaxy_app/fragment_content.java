@@ -24,8 +24,8 @@ public class fragment_content extends android.support.v4.app.Fragment {
         View view=inflater.inflate(R.layout.fragment_content,container,false);
         ListView listView=view.findViewById(R.id.lvContent);
         ArrayList<Shop> arrayList=new ArrayList<>();
-        Shop shop1=new Shop("I LOVE KEM","Đây là mẩu tin quảng cáo...","12:00:00 23/7/2017","15%","10","20","4");
-        Shop shop2=new Shop("I LOVE KEM2","Đây là mẩu tin quảng cáo...","12:00:00 23/7/2017","15%","10","20","4");
+        Shop shop1=new Shop("I LOVE KEM","Đây là mẩu tin quảng cáo...","12:00:00 23/7/2017","15%","10","20","4","null");
+        Shop shop2=new Shop("I LOVE KEM2","Đây là mẩu tin quảng cáo...","12:00:00 23/7/2017","15%","10","20","4","null");
         arrayList.add(shop1);
         arrayList.add(shop2);
 

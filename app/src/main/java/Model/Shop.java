@@ -5,8 +5,8 @@ package Model;
  */
 
 public class Shop {
-    String name,title,date,sale,like,comment,rate;
-    public Shop(String name, String title, String date, String sale, String like, String comment, String rate) {
+    String name,title,date,sale,like,comment,rate,image;
+    public Shop(String name, String title, String date, String sale, String like, String comment, String rate,String image) {
         this.name = name;
         this.title = title;
         this.date = date;
@@ -14,6 +14,15 @@ public class Shop {
         this.like = like;
         this.comment = comment;
         this.rate = rate;
+        this.image=image;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getName() {

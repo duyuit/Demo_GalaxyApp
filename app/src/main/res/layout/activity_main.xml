@@ -11,61 +11,109 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.billy.galaxy_app.MainActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/main.appbar"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <!--app:layout_scrollFlags="scroll|exitUntilCollapsed"-->
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/main.collapsing"
+    <TabHost
+        android:layout_width="match_parent"
+        android:id="@+id/tabHost"
+        android:elevation="5dp"
+        android:layout_height="match_parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary">
+            android:orientation="vertical">
 
-            <android.support.constraint.ConstraintLayout
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <com.daimajia.slider.library.SliderLayout
-                    android:id="@+id/slider2"
+
+                <android.support.design.widget.CoordinatorLayout
+                    android:id="@+id/tab1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    custom:pager_animation="Accordion"
-                    custom:auto_cycle="true"
-                    custom:indicator_visibility="visible"
-                    custom:pager_animation_span="1100"
-                    />
-            </android.support.constraint.ConstraintLayout>
+                    android:orientation="vertical">
+                    <android.support.design.widget.AppBarLayout
+                        android:id="@+id/main.appbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>
+                        <!--app:layout_scrollFlags="scroll|exitUntilCollapsed"-->
+                        <android.support.design.widget.CollapsingToolbarLayout
+                            android:id="@+id/main.collapsing"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                            android:fitsSystemWindows="true"
+                            app:contentScrim="?attr/colorPrimary">
 
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/nest"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:fillViewport="true">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewpager"
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="1"
-            android:background="@android:color/white">
-            <android.support.design.widget.TabLayout
-                android:id="@+id/sliding_tabs"
-                app:tabSelectedTextColor="@color/colorPrimary"
-                app:tabIndicatorColor="@color/colorPrimary"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                app:tabMode="fixed">
-            </android.support.design.widget.TabLayout>
 
-        </android.support.v4.view.ViewPager>
+                            <com.daimajia.slider.library.SliderLayout
+                                android:id="@+id/slider2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                custom:pager_animation="Accordion"
+                                custom:auto_cycle="true"
+                                custom:indicator_visibility="visible"
+                                custom:pager_animation_span="1100"
+                                >
+                            </com.daimajia.slider.library.SliderLayout>
 
-    </android.support.v4.widget.NestedScrollView>
+                        </android.support.design.widget.CollapsingToolbarLayout>
+                    </android.support.design.widget.AppBarLayout>
+
+                    <android.support.v4.widget.NestedScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/nest"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                        android:fillViewport="true">
+
+                        <android.support.v4.view.ViewPager
+                            android:id="@+id/viewpager"
+                            android:layout_width="match_parent"
+                            android:layout_height="0px"
+                            android:layout_weight="1"
+                            android:background="@android:color/white">
+
+                            <android.support.design.widget.TabLayout
+                                android:id="@+id/sliding_tabs"
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                app:tabIndicatorColor="@color/colorPrimary"
+                                app:tabMode="fixed"
+                                app:tabSelectedTextColor="@color/colorPrimary"></android.support.design.widget.TabLayout>
+                        </android.support.v4.view.ViewPager>
+
+                    </android.support.v4.widget.NestedScrollView>
+                </android.support.design.widget.CoordinatorLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/tab2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <include layout="@layout/service_layout"></include>
+                </android.support.constraint.ConstraintLayout>
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/tab3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <include layout="@layout/service_layout"></include>
+                </android.support.constraint.ConstraintLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+
 </android.support.design.widget.CoordinatorLayout>

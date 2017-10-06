@@ -6,6 +6,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
@@ -28,6 +31,47 @@ public class MainActivity  extends AppCompatActivity implements BaseSliderView.O
         setContentView(R.layout.activity_main);
         addControl();
         ADDLOL();
+
+        TabHost tabHost;
+        tabHost= (TabHost) findViewById(R.id.tabHost);
+        tabHost.setup();
+
+        //Setup cho tab 1
+        TabHost.TabSpec tab1=tabHost.newTabSpec("t1");
+        tab1.setIndicator("Ưu đãi");
+        tab1.setContent(R.id.tab1);
+        tabHost.addTab(tab1);
+
+        //Setup cho tab 2
+        TabHost.TabSpec tab2=tabHost.newTabSpec("t2");
+        tab2.setIndicator("D.vụ Galaxy");
+        tab2.setContent(R.id.tab2);
+        tabHost.addTab(tab2);
+
+        TabHost.TabSpec tab3=tabHost.newTabSpec("t2");
+        tab2.setIndicator("Samsung Elite");
+        tab2.setContent(R.id.tab3);
+        tabHost.addTab(tab2);
+
+        for(int i=0;i<3;i++)
+        {
+            TextView x = (TextView) tabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
+            x.setTextSize(12);
+        }
+
+        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String s) {
+                switch (s)
+                {
+                    case  "t1":
+                    Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
+                    break;
+
+                }
+            }
+        });
+
     }
 
     private void addControl() {
@@ -48,7 +92,8 @@ public class MainActivity  extends AppCompatActivity implements BaseSliderView.O
         url_maps.put("Hannibal", "https://www.youtube.com/yts/img/yt_1200-vfl4C3T0K.png");
         url_maps.put("Big Bang Theory", "http://tvfiles.alphacoders.com/100/hdclearart-10.png");
         url_maps.put("House of Cards", "http://cdn3.nflximg.net/images/3093/2043093.jpg");
-        url_maps.put("Game of Thrones", "http://www.marcopeterson.info/wp-content/uploads/2015/03/GitHub-Logo.png");
+        url_maps.put("Game of Thrones", "https://www.google.com.vn/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png");
+        url_maps.put("Game of Thrones 2", "https://d1afx9quaogywf.cloudfront.net/sites/default/files/Logos/facebook-logo_0.png");
 
         HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
 //        file_maps.put("Hannibal",R.drawable.hannibal);
